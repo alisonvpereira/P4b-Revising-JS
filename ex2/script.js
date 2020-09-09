@@ -4,6 +4,10 @@ if (document.readyState == 'loading') {
     ready()
 }
 
+
+  
+
+
 function ready() {
     var removeCartItemButtons = document.getElementsByClassName('btn-danger')
     for (var i = 0; i < removeCartItemButtons.length; i++) {
@@ -98,6 +102,35 @@ function updateCartTotal() {
         var quantity = quantityElement.value
         total = total + (price * quantity)
     }
-    total = Math.round(total * 100) / 100
+    total = total.toFixed(2);
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
+}
+
+
+
+
+
+
+// Get the modal
+var modal = document.getElementById("cartModal");
+// Get the button that opens the modal
+var btn = document.getElementById("cartBtn");
+// Open modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// close modal from (x)
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+//  click anywhere to close modal
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
